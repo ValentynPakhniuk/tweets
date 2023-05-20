@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import UserItem from "../UserItem/UserItem";
 import { CardList, Container } from "./UsersList.styled";
