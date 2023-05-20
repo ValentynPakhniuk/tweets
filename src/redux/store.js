@@ -31,7 +31,7 @@ export const store = configureStore({
     users: persistReducer(usersPersistConfig, usersReducer),
   },
   middleware,
-  devTools: process.env.NODE_ENV === "development",
+  devTools: true,
 });
 
 export const persistor = persistStore(store);
