@@ -15,6 +15,7 @@ import logo from "../../images/Logo.png";
 import picture from "../../images/cardBackgroundImage.png";
 import { selectIsLoading } from "../../redux/users/selectors";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const UserItem = ({ user, followedUsers, handleClick }) => {
   const isLoading = useSelector(selectIsLoading);
@@ -60,6 +61,12 @@ const UserItem = ({ user, followedUsers, handleClick }) => {
       </article>
     </Item>
   );
+};
+
+UserItem.propTypes = {
+  user: PropTypes.object.isRequired,
+  followedUsers: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default UserItem;
