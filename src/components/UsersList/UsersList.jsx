@@ -4,7 +4,10 @@ import UserItem from "../UserItem/UserItem";
 import { CardList, Container } from "./UsersList.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUsers } from "../../redux/users/selectors";
-import { updateUsersFollowersThunk } from "../../redux/users/operations";
+import {
+  fetchUsersThunk,
+  updateUsersFollowersThunk,
+} from "../../redux/users/operations";
 import { Button } from "../Button/Button.styled";
 // import ellipseAvatar from "../../images/EllipseAvatar.png";
 
@@ -18,6 +21,11 @@ export const UsersList = () => {
   const users = useSelector(selectUsers);
   const [followedUsers, setFollowedUsers] = useState(initialFollowedUsers);
   const backLinkLocationRef = useRef(location.state?.from ?? "/");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    dispatch(fetchUsersThunk(currentPage));
+  }, [dispatch, currentPage]);
 
   useEffect(() => {
     localStorage.setItem("followedUsers", JSON.stringify(followedUsers));
@@ -38,6 +46,10 @@ export const UsersList = () => {
     dispatch(updateUsersFollowersThunk(newUser));
   };
 
+  const handleClickLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   return (
     <Container>
       <Link to={backLinkLocationRef.current}>
@@ -53,6 +65,15 @@ export const UsersList = () => {
           />
         ))}
       </CardList>
+      <div>
+        <Button
+          type="button"
+          onClick={handleClickLoadMore}
+          disabled={users.length === 12}
+        >
+          Load More
+        </Button>
+      </div>
     </Container>
   );
 };
