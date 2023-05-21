@@ -11,7 +11,7 @@ import {
   Item,
 } from "./UserItem.styled";
 import { Link } from "react-router-dom";
-import logo from "../../images/Logo.png";
+import logoGoIt from "../../images/LogoGoIt.png";
 import picture from "../../images/cardBackgroundImage.png";
 import { selectIsLoading } from "../../redux/users/selectors";
 import { useSelector } from "react-redux";
@@ -27,7 +27,7 @@ const UserItem = ({ user, followedUsers, handleClick }) => {
       <article>
         <BoxLogo>
           <Link to={backLinkLocationRef.current}>
-            <img src={logo} alt="logo go-it" width="76" height="22" />
+            <img src={logoGoIt} alt="logo go-it" width="76" height="22" />
           </Link>
         </BoxLogo>
         <CardBackgroundImage

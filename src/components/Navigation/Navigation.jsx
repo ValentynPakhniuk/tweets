@@ -7,7 +7,7 @@ export const Navigation = () => {
     <nav>
       <SiteNavLink to="/">Home</SiteNavLink>
       <SiteNavLink to="/users" state={{ from: location }}>
-        Users
+        Tweets
       </SiteNavLink>
     </nav>
   );
