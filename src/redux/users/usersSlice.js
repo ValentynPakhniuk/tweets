@@ -14,15 +14,16 @@ const handlePending = (state) => {
 const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.users = payload;
+  const newUsers = payload.filter(
+    (newUser) => !state.users.some((user) => user.id === newUser.id)
+  );
+
+  state.users.push(...newUsers);
 };
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-};
-const handlePendingFollowers = (state) => {
-  state.isLoading = true;
 };
 
 const handleFulfilledFollowers = (state, action) => {
@@ -39,11 +40,6 @@ const handleFulfilledFollowers = (state, action) => {
   state.users = updateUsers;
 };
 
-const handleRejectedFollowers = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
 export const usersSlice = createSlice({
   name: "users",
   initialState: listUsers,
@@ -52,9 +48,9 @@ export const usersSlice = createSlice({
       .addCase(fetchUsersThunk.pending, handlePending)
       .addCase(fetchUsersThunk.fulfilled, handleFulfilled)
       .addCase(fetchUsersThunk.rejected, handleRejected)
-      .addCase(updateUsersFollowersThunk.pending, handlePendingFollowers)
+      .addCase(updateUsersFollowersThunk.pending, handlePending)
       .addCase(updateUsersFollowersThunk.fulfilled, handleFulfilledFollowers)
-      .addCase(updateUsersFollowersThunk.rejected, handleRejectedFollowers);
+      .addCase(updateUsersFollowersThunk.rejected, handleRejected);
   },
 });
 
