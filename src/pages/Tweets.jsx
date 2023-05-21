@@ -10,9 +10,6 @@ const Tweets = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-  useEffect(() => {
-    dispatch(fetchUsersThunk());
-  }, [dispatch]);
   return (
     <>
       <Helmet>
