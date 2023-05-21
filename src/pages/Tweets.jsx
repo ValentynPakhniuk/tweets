@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { Helmet } from "react-helmet-async";
 import { UsersList } from "../components/UsersList/UsersList";
 import { selectError, selectIsLoading } from "../redux/users/selectors";
 
@@ -9,9 +8,6 @@ const Tweets = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Users tweets</title>
-      </Helmet>
       {isLoading && !error && <b>Request in progress...</b>}
       <UsersList />
     </>
