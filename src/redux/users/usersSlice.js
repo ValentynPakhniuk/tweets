@@ -29,10 +29,9 @@ const handleRejected = (state, action) => {
 const handleFulfilledFollowers = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  const newUser = action.payload;
   const updateUsers = state.users.map((user) => {
     if (user.id === newUser.id) {
-      return newUser;
+      return { ...user, ...action.payload };
     } else {
       return user;
     }
