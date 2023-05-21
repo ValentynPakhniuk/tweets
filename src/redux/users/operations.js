@@ -6,9 +6,9 @@ axios.defaults.baseURL = "https://64500800b61a9f0c4d31a1ad.mockapi.io/api/v1";
 
 export const fetchUsersThunk = createAsyncThunk(
   "users/fetchAll",
-  async (_, thunkAPI) => {
+  async (currentPage, thunkAPI) => {
     try {
-      const response = await axios.get(`/users`);
+      const response = await axios.get(`/users?page=${currentPage}&limit=3`);
       return response.data;
     } catch (e) {
       toast.error(e.message);
@@ -16,6 +16,7 @@ export const fetchUsersThunk = createAsyncThunk(
     }
   }
 );
+
 export const updateUsersFollowersThunk = createAsyncThunk(
   "users/update",
   async (user, thunkAPI) => {
