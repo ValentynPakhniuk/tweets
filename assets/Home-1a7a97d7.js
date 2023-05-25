@@ -1,0 +1,1 @@
+import{j as e,W as t,C as o}from"./index-f4ae45d2.js";function s(){return e.jsxs(e.Fragment,{children:[e.jsx(t,{children:e.jsx("title",{children:"Tweets"})}),e.jsx(o,{children:e.jsx("h1",{children:"Welcome to the tweet home page. I wish you a good time."})})]})}export{s as default};
