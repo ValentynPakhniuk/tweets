@@ -1,0 +1,1 @@
+import{j as e}from"./index-f1cc2767.js";import{C as o}from"./UsersList.styled-72c7f644.js";function i(){return e.jsx(o,{children:e.jsx("h1",{children:"Welcome to the tweet home page. I wish you a good time."})})}export{i as default};
