@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { App } from "./App";
 import "./index.css";
@@ -12,11 +12,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <HashRouter basename="/tweets">
+        <BrowserRouter basename="/tweets">
           <HelmetProvider>
             <App />
           </HelmetProvider>
-        </HashRouter>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
